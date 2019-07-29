@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,29 +10,40 @@ function App() {
 	return (
 		<Router>
 			<div className='container'>
-				<h2>MERN-Stack Todo App</h2>
-				<p>It's a Todo application made by Mahesh</p>
-				<nav className='navbar navbar-expand-lg navbar-light bg-light'>
-					<span>
-						<Link to='/'>MERN Todo App</Link>
-					</span>
-					<div className='collapse nav-collapse'>
+				<h2>MERN-Stack App</h2>
+				<p>
+					It's a Todo application made by{' '}
+					<a
+						className='navbar-brand'
+						href='https://mahesh-portfolio.netlify.com/'
+						target='_blank'
+					>
+						Mahesh
+					</a>
+				</p>
+				<nav className='navbar navbar-expand-sm navbar-light bg-light'>
+					<div className='collapse navbar-collapse' id='navbarSupportedContent'>
 						<ul className='navbar-nav mr-auto'>
-							<li className='navbar-item'>
-								<Link to='/' className='nav-link'>
+							<li className='navbar-item active'>
+								<Link to='/' className='nav-link mr-auto'>
 									Todos
 								</Link>
 							</li>
 							<li className='navbar-item'>
-								<Link to='/create' className='nav-link'>
-									Create Todo
+								<Link to='/edit/1' className='nav-link mr-auto'>
+									Edit
+								</Link>
+							</li>
+							<li className='navbar-item'>
+								<Link to='/create' className='nav-link mr-right'>
+									Create
 								</Link>
 							</li>
 						</ul>
 					</div>
 				</nav>
 			</div>
-			<Route path='/' component={TodosList} />
+			<Route path='/' exact component={TodosList} />
 			<Route path='/edit/:id' component={EditTodo} />
 			<Route path='/create' component={CreateTodo} />
 		</Router>
